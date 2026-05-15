@@ -1,0 +1,1972 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Click Soluções — Catálogo de Semi Novos</title>
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
+<style>
+  :root {
+    --bg: #f5f7fa;
+    --surface: #ffffff;
+    --text: #1a2332;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+    --primary: #0066cc;
+    --primary-hover: #0052a3;
+    --accent: #16a34a;
+    --accent-hover: #15803d;
+    --danger: #dc2626;
+    --warning: #f59e0b;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+    --shadow-md: 0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04);
+    --shadow-lg: 0 12px 32px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+
+  /* Header */
+  .site-header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(8px);
+    background: rgba(255,255,255,.92);
+  }
+  .site-header-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .brand-logo {
+    width: 48px; height: 48px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .brand-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .brand-logo-fallback {
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, #ee5a3a, #16a085);
+    color: white;
+    font-weight: 700;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .brand-text h1 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .brand-text p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .header-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 16px;
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all .15s ease;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .btn:hover { transform: translateY(-1px); box-shadow: var(--shadow-sm); }
+  .btn-primary { background: var(--primary); color: white; }
+  .btn-primary:hover { background: var(--primary-hover); }
+  .btn-success { background: var(--accent); color: white; }
+  .btn-success:hover { background: var(--accent-hover); }
+  .btn-ghost { background: transparent; border-color: var(--border); }
+  .btn-ghost:hover { background: var(--bg); }
+  .btn-danger { background: transparent; color: var(--danger); border-color: var(--border); }
+  .btn-danger:hover { background: #fef2f2; border-color: var(--danger); }
+  .btn-icon { padding: 10px; min-width: 40px; }
+  .btn-sm { padding: 6px 10px; font-size: 13px; }
+  .btn-block { width: 100%; }
+
+  /* Hero/Toolbar */
+  .toolbar-section {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 32px 24px 16px;
+  }
+  .hero-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 4px;
+  }
+  .hero-subtitle {
+    color: var(--text-muted);
+    margin: 0 0 20px;
+  }
+
+  .toolbar {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    background: var(--surface);
+    padding: 16px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+  }
+  .search-box {
+    flex: 1 1 300px;
+    position: relative;
+  }
+  .search-box input {
+    width: 100%;
+    padding: 10px 14px 10px 38px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--bg);
+    font-size: 14px;
+    transition: all .15s ease;
+  }
+  .search-box input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: white;
+    box-shadow: 0 0 0 3px rgba(0,102,204,.1);
+  }
+  .search-box::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px; height: 16px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='11' r='8'/><path d='m21 21-4.3-4.3'/></svg>");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .filter-select {
+    padding: 10px 14px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--bg);
+    font-size: 14px;
+    cursor: pointer;
+    min-width: 160px;
+  }
+  .filter-select:focus {
+    outline: none;
+    border-color: var(--primary);
+  }
+
+  /* Grid */
+  .catalog {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 16px 24px 64px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  /* Card */
+  .card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+    transition: all .2s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  .card-image {
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+    overflow: hidden;
+    position: relative;
+  }
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .card-image-placeholder {
+    width: 100%; height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+  .card-body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+  }
+  .card-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.3;
+  }
+  .specs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .spec-tag {
+    background: var(--bg);
+    color: var(--text);
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 500;
+    border: 1px solid var(--border);
+  }
+  .battery-good { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .battery-ok { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .battery-low { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .replaced-badge {
+    background: #fef3c7;
+    color: #92400e;
+    border-color: #fde68a;
+  }
+  .original-badge {
+    background: #dcfce7;
+    color: #166534;
+    border-color: #bbf7d0;
+  }
+
+  .price-block {
+    background: var(--bg);
+    padding: 12px;
+    border-radius: var(--radius-sm);
+    margin-top: auto;
+  }
+  .price-cash {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+  .price-cash strong {
+    font-size: 22px;
+    color: var(--accent);
+    font-weight: 700;
+    display: block;
+  }
+  .price-installments {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    border-top: 1px dashed var(--border);
+    margin-top: 8px;
+    padding-top: 8px;
+  }
+  .price-installments strong { color: var(--text); font-weight: 600; }
+
+  .card-actions {
+    display: flex;
+    gap: 6px;
+  }
+  .card-actions .btn { flex: 1; }
+  .admin-only { display: none; }
+  body.admin-mode .admin-only { display: flex; }
+
+  /* Empty state */
+  .empty-state {
+    text-align: center;
+    padding: 64px 24px;
+    color: var(--text-muted);
+  }
+  .empty-state h3 {
+    color: var(--text);
+    margin: 0 0 8px;
+  }
+
+  /* Modal */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, .5);
+    backdrop-filter: blur(4px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 100;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: var(--surface);
+    border-radius: var(--radius);
+    width: 100%;
+    max-width: 540px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow-lg);
+  }
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .modal-header h2 { margin: 0; font-size: 18px; }
+  .modal-body { padding: 24px; }
+  .modal-footer {
+    padding: 16px 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+  }
+  .form-row {
+    margin-bottom: 16px;
+  }
+  .form-row label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .form-row input,
+  .form-row select,
+  .form-row textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-family: inherit;
+    background: var(--surface);
+    transition: border-color .15s ease;
+  }
+  .form-row input:focus,
+  .form-row select:focus,
+  .form-row textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(0,102,204,.1);
+  }
+  .form-row textarea { resize: vertical; min-height: 60px; }
+  .form-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .form-help {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+  .photo-preview {
+    margin-top: 8px;
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: var(--bg);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 13px;
+    border: 1px dashed var(--border);
+  }
+  .photo-preview img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+
+  /* Edit gallery (admin form) */
+  .photos-gallery-edit {
+    margin-top: 8px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 6px;
+    min-height: 80px;
+    padding: 6px;
+    background: var(--bg);
+    border-radius: var(--radius-sm);
+    border: 1px dashed var(--border);
+  }
+  .photos-gallery-edit:empty::before {
+    content: 'Nenhuma foto adicionada';
+    color: var(--text-muted);
+    font-size: 13px;
+    grid-column: 1 / -1;
+    text-align: center;
+    align-self: center;
+    padding: 18px 0;
+  }
+  .thumb-edit {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: white;
+  }
+  .thumb-edit img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .thumb-remove {
+    position: absolute;
+    top: 4px; right: 4px;
+    width: 22px; height: 22px;
+    background: rgba(0,0,0,.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    line-height: 1;
+  }
+  .thumb-remove:hover { background: var(--danger); }
+  .thumb-main-badge {
+    position: absolute;
+    bottom: 4px; left: 4px;
+    background: var(--primary);
+    color: white;
+    font-size: 10px;
+    padding: 1px 6px;
+    border-radius: 999px;
+    font-weight: 600;
+  }
+
+  /* Card gallery (public view) */
+  .card-image {
+    position: relative;
+  }
+  .card-gallery {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform .25s ease;
+  }
+  .card-gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .gallery-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px; height: 32px;
+    background: rgba(255,255,255,.9);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: var(--text);
+    transition: all .15s ease;
+    z-index: 2;
+    padding: 0;
+  }
+  .gallery-arrow:hover { background: white; transform: translateY(-50%) scale(1.05); }
+  .gallery-arrow.prev { left: 8px; }
+  .gallery-arrow.next { right: 8px; }
+  .gallery-dots {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 4px;
+    z-index: 2;
+  }
+  .gallery-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.6);
+    transition: all .15s ease;
+  }
+  .gallery-dot.active {
+    background: white;
+    width: 18px;
+    border-radius: 999px;
+  }
+  .gallery-counter {
+    position: absolute;
+    top: 8px; right: 8px;
+    background: rgba(0,0,0,.55);
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 999px;
+    z-index: 2;
+  }
+
+  /* Admin badge */
+  .admin-badge {
+    display: none;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    background: #fef3c7;
+    color: #92400e;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  body.admin-mode .admin-badge { display: inline-flex; }
+
+  /* Float WhatsApp button */
+  .whatsapp-icon {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+  }
+
+  /* Lightbox (zoom de foto) */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.92);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 300;
+    padding: 40px 20px;
+    animation: fadeIn .2s ease;
+  }
+  .lightbox.open { display: flex; }
+  @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+  .lightbox-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 6px;
+    box-shadow: 0 16px 48px rgba(0,0,0,.5);
+    user-select: none;
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 16px; right: 16px;
+    width: 44px; height: 44px;
+    background: rgba(255,255,255,.15);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .15s ease;
+    backdrop-filter: blur(8px);
+  }
+  .lightbox-close:hover { background: rgba(255,255,255,.3); }
+  .lightbox-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 52px; height: 52px;
+    background: rgba(255,255,255,.15);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .15s ease;
+    backdrop-filter: blur(8px);
+  }
+  .lightbox-arrow:hover { background: rgba(255,255,255,.3); transform: translateY(-50%) scale(1.05); }
+  .lightbox-arrow.prev { left: 20px; }
+  .lightbox-arrow.next { right: 20px; }
+  .lightbox-counter {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,.6);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+    backdrop-filter: blur(8px);
+  }
+  .lightbox-caption {
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    background: rgba(0,0,0,.5);
+    padding: 6px 14px;
+    border-radius: 999px;
+    backdrop-filter: blur(8px);
+    max-width: calc(100% - 140px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Cursor pointer on card images to hint clickability */
+  .card-image:has(.card-gallery), .card-image:has(img) { cursor: zoom-in; }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--text);
+    color: white;
+    padding: 12px 20px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    box-shadow: var(--shadow-lg);
+    transition: transform .25s ease;
+    z-index: 200;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* Mobile / Tablet pequeno - compacto */
+  @media (max-width: 768px) {
+    .site-header { padding: 8px 10px; }
+    .brand-logo { width: 30px; height: 30px; }
+    .brand-text h1 { font-size: 13px; }
+    .brand-text p { display: none; }
+    .toolbar-section { padding: 10px 10px 4px; }
+    .hero-title { font-size: 15px; margin-bottom: 2px; }
+    .hero-subtitle { display: none; }
+    .toolbar { padding: 6px; gap: 6px; }
+    .search-box { flex-basis: 100%; }
+    .search-box input { font-size: 12px; padding: 6px 10px 6px 30px; }
+    .search-box::before { left: 10px; }
+    .filter-select { font-size: 12px; padding: 6px 10px; padding-left: 10px; min-width: 0; flex: 1; }
+    .catalog { padding: 8px 10px 30px; }
+    .grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .card-image { aspect-ratio: 1 / 1; }
+    .card-body { padding: 8px; gap: 6px; }
+    .card-title { font-size: 12px; line-height: 1.2; }
+    .spec-tag { font-size: 9px; padding: 2px 6px; }
+    .price-block { padding: 6px 8px; }
+    .price-cash { font-size: 10px; }
+    .price-cash strong { font-size: 13px; }
+    .price-installments { font-size: 9px; padding-top: 4px; margin-top: 4px; }
+    .card-actions { flex-direction: column; gap: 4px; }
+    .card-actions .btn { padding: 5px 8px; font-size: 11px; }
+    .card-actions .btn-sm { padding: 5px 6px; }
+    .whatsapp-icon { width: 12px; height: 12px; }
+    .btn { padding: 6px 10px; font-size: 12px; }
+    .btn-icon { padding: 6px; min-width: 30px; }
+    .header-actions .btn { padding: 6px 8px; font-size: 11px; }
+    .admin-badge { display: none !important; }
+  }
+  /* Phones pequenos (iPhone SE, etc.) - ainda mais compacto */
+  @media (max-width: 400px) {
+    .site-header { padding: 6px 8px; }
+    .brand-logo { width: 26px; height: 26px; }
+    .brand-text h1 { font-size: 12px; }
+    .toolbar-section { padding: 8px 8px 2px; }
+    .hero-title { font-size: 13px; }
+    .toolbar { padding: 5px; gap: 5px; }
+    .search-box input { font-size: 11px; padding: 5px 8px 5px 26px; }
+    .search-box::before { left: 8px; width: 14px; height: 14px; }
+    .filter-select { font-size: 11px; padding: 5px 8px; }
+    .catalog { padding: 6px 8px 20px; }
+    .grid { gap: 6px; }
+    .card-body { padding: 6px; gap: 5px; }
+    .card-title { font-size: 11px; }
+    .price-block { padding: 5px 7px; }
+    .price-cash strong { font-size: 12px; }
+    .spec-tag { font-size: 9px; padding: 2px 5px; }
+    .card-actions .btn { font-size: 10px; padding: 4px 6px; }
+    .header-actions .btn { padding: 5px 7px; font-size: 10px; }
+  }
+  /* Phones MUITO pequenos (≤340px) - mantém 2 colunas, encolhe mais */
+  @media (max-width: 340px) {
+    .brand-text h1 { font-size: 11px; }
+    .hero-title { font-size: 12px; }
+    .card-title { font-size: 10px; }
+    .price-cash strong { font-size: 11px; }
+  }
+  /* Lightbox mobile */
+  @media (max-width: 600px) {
+    .lightbox { padding: 20px 10px; }
+    .lightbox-arrow { width: 44px; height: 44px; font-size: 22px; }
+    .lightbox-arrow.prev { left: 8px; }
+    .lightbox-arrow.next { right: 8px; }
+    .lightbox-close { top: 10px; right: 10px; width: 38px; height: 38px; font-size: 18px; }
+    .lightbox-caption { font-size: 12px; max-width: calc(100% - 100px); }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="brand">
+      <div class="brand-logo">
+        <img src="logo.png" alt="Click Soluções"
+             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'brand-logo-fallback\'>C</div>'">
+      </div>
+      <div class="brand-text">
+        <h1>Click Soluções</h1>
+        <p>Catálogo de semi novos · revisados, prontos pra uso</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <span class="admin-badge">● Modo Admin</span>
+      <button class="btn btn-success admin-only" id="btnAdd">+ Adicionar</button>
+      <button class="btn btn-primary admin-only" id="btnPublish" title="Publicar alterações no site">📤 Publicar</button>
+      <button class="btn btn-ghost admin-only" id="btnOptimize" title="Otimizar todas as fotos do catálogo">🗜</button>
+      <button class="btn btn-ghost admin-only" id="btnExport" title="Exportar JSON (backup)">⬇</button>
+      <button class="btn btn-ghost admin-only" id="btnImport" title="Importar JSON">⬆</button>
+      <button class="btn btn-ghost btn-icon admin-only" id="btnNetlifyConfig" title="Configurar publicação (GitHub)">🔧</button>
+      <button class="btn btn-ghost btn-icon admin-only" id="btnAdmin" title="Sair do modo admin">⚙</button>
+    </div>
+  </div>
+</header>
+
+<section class="toolbar-section">
+  <h2 class="hero-title">Estoque disponível</h2>
+  <p class="hero-subtitle">Todos os aparelhos passam por revisão técnica antes da venda.</p>
+  <div class="toolbar">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Buscar por modelo, cor...">
+    </div>
+    <select class="filter-select" id="brandFilter">
+      <option value="">Todas as marcas</option>
+    </select>
+  </div>
+</section>
+
+<main class="catalog">
+  <div class="grid" id="grid"></div>
+  <div class="empty-state" id="emptyState" style="display:none">
+    <h3>Nenhum aparelho cadastrado ainda</h3>
+    <p>Clique no ícone ⚙ no topo, depois em "+ Adicionar" para começar.</p>
+  </div>
+</main>
+
+<!-- Modal: adicionar/editar -->
+<div class="modal-overlay" id="modalForm">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 id="modalTitle">Adicionar aparelho</h2>
+      <button class="btn btn-ghost btn-sm" id="modalClose">✕</button>
+    </div>
+    <div class="modal-body">
+      <form id="deviceForm">
+        <input type="hidden" id="deviceId">
+
+        <div class="form-row">
+          <label>Fotos do aparelho</label>
+          <input type="file" id="photoFile" accept="image/*" multiple>
+          <div class="form-help">Selecione uma ou várias fotos (frente, costas, detalhes). Você também pode colar URLs separadas por vírgula no campo abaixo.</div>
+          <input type="text" id="photoUrl" placeholder="https://..., https://..." style="margin-top:6px">
+          <div class="photos-gallery-edit" id="photosGalleryEdit"></div>
+        </div>
+
+        <div class="form-row">
+          <label>Marca / Modelo *</label>
+          <input type="text" id="model" placeholder="Ex: iPhone 13 Pro" required>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-row">
+            <label>Cor *</label>
+            <input type="text" id="color" placeholder="Ex: Grafite" required>
+          </div>
+          <div class="form-row">
+            <label>Armazenamento *</label>
+            <input type="text" id="storage" placeholder="Ex: 128GB" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label>Saúde da bateria (%) *</label>
+          <input type="number" id="battery" min="0" max="100" placeholder="Ex: 92" required>
+        </div>
+
+        <div class="form-row">
+          <label>Peças trocadas</label>
+          <input type="text" id="replaced" placeholder="Ex: tela / nenhuma / bateria">
+          <div class="form-help">Deixe em branco ou escreva "nenhuma" se for tudo original.</div>
+        </div>
+
+        <div class="form-row">
+          <label>Garantia</label>
+          <input type="text" id="warranty" placeholder="Ex: 90 dias / 3 meses / 6 meses">
+          <div class="form-help">Deixe em branco se não houver garantia.</div>
+        </div>
+
+        <div class="form-row">
+          <label>Valor à vista (R$) *</label>
+          <input type="number" id="price" step="0.01" min="0" placeholder="Ex: 2500.00" required>
+          <div class="form-help">As parcelas em 12x e 18x serão calculadas automaticamente (12% e 19% de acréscimo).</div>
+        </div>
+
+        <div class="form-row">
+          <label>Observações (opcional)</label>
+          <textarea id="notes" placeholder="Acompanha caixa, nota fiscal, fone..."></textarea>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" id="cancelBtn">Cancelar</button>
+      <button class="btn btn-primary" id="saveBtn">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Configurar publicação (GitHub) -->
+<div class="modal-overlay" id="modalNetlify">
+  <div class="modal">
+    <div class="modal-header">
+      <h2>Configurar publicação</h2>
+      <button class="btn btn-ghost btn-sm" id="modalNetlifyClose">✕</button>
+    </div>
+    <div class="modal-body">
+      <p style="font-size:13px; color:var(--muted); margin:0 0 16px; line-height:1.5;">
+        Conecte sua conta do GitHub para publicar com 1 toque. O site é hospedado no Cloudflare Pages e atualiza sozinho. Os dados ficam salvos só neste navegador.
+      </p>
+
+      <div class="form-row">
+        <label>Usuário do GitHub</label>
+        <input type="text" id="ghUser" placeholder="ex: clicksolucoes" autocomplete="off" autocapitalize="off">
+        <div class="form-help">Seu nome de usuário no GitHub (aparece em github.com/<b>seu-usuario</b>).</div>
+      </div>
+
+      <div class="form-row">
+        <label>Nome do repositório</label>
+        <input type="text" id="ghRepo" placeholder="ex: catalogo-clickms" autocomplete="off" autocapitalize="off">
+        <div class="form-help">O repositório onde estão os arquivos do catálogo.</div>
+      </div>
+
+      <div class="form-row">
+        <label>Branch</label>
+        <input type="text" id="ghBranch" placeholder="main" autocomplete="off" autocapitalize="off">
+        <div class="form-help">Geralmente <b>main</b>. Deixe assim se não souber.</div>
+      </div>
+
+      <div class="form-row">
+        <label>Token de acesso</label>
+        <input type="password" id="ghToken" placeholder="cole o token aqui" autocomplete="off" autocapitalize="off">
+        <div class="form-help">No GitHub: <b>Settings</b> → <b>Developer settings</b> → <b>Personal access tokens</b> → <b>Fine-grained tokens</b> → dê acesso de <b>leitura e escrita em "Contents"</b> ao repositório.</div>
+      </div>
+
+      <div id="netlifyStatus" style="font-size:13px; padding:10px; border-radius:8px; display:none; margin-top:10px;"></div>
+    </div>
+    <div class="modal-footer" style="justify-content:space-between;">
+      <button class="btn btn-danger btn-sm" id="netlifyClearBtn" style="display:none;">Limpar dados</button>
+      <div style="display:flex; gap:8px; margin-left:auto;">
+        <button class="btn btn-ghost" id="netlifyCancelBtn">Cancelar</button>
+        <button class="btn btn-primary" id="netlifySaveBtn">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Hidden file input for import -->
+<input type="file" id="importFile" accept=".json" style="display:none">
+
+<!-- Lightbox para ampliar fotos -->
+<div class="lightbox" id="lightbox" role="dialog" aria-label="Visualizador de imagem">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Fechar">✕</button>
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+  <button class="lightbox-arrow prev" id="lightboxPrev" aria-label="Foto anterior">‹</button>
+  <img class="lightbox-img" id="lightboxImg" alt="">
+  <button class="lightbox-arrow next" id="lightboxNext" aria-label="Próxima foto">›</button>
+  <div class="lightbox-counter" id="lightboxCounter"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ======================================================================
+   Catálogo de Semi Novos — JS principal
+   - Dados em localStorage
+   - Cálculo de parcelas: 12x com 12% acréscimo total / 18x com 19% total
+   - WhatsApp: 5567998519524
+====================================================================== */
+
+const STORAGE_KEY = 'catalogo_semi_novos_v1';
+const WHATSAPP = '5567998519524';
+const TAXA_12X = 0.12;  // 12% de acréscimo total para 12x
+const TAXA_18X = 0.19;  // 19% de acréscimo total para 18x
+
+/* ====================================================================
+   SENHA DE ADMINISTRADOR
+   --------------------------------------------------------------------
+   Para entrar no modo admin (botão de engrenagem ⚙, +Adicionar, editar
+   etc.), acesse o catálogo passando ?admin=SENHA na URL. Exemplo:
+
+     https://catalogo-clickms.pages.dev/catalogo.html?admin=clickms2026
+
+   Salve essa URL nos favoritos do SEU navegador. Visitantes comuns que
+   acessam sem o parâmetro nunca verão os botões de administração.
+
+   Para mudar a senha: troque o valor de ADMIN_PASS abaixo e publique
+   novamente o arquivo (toque em 📤 Publicar ou suba pelo GitHub).
+   ==================================================================== */
+const ADMIN_PASS = 'clickms2026';
+
+/* Logger defensivo — alguns ambientes (iframe Wix, certas extensões)
+   removem métodos de console. Evita quebrar se console.info / .error sumirem */
+const log = {
+  info: (...args) => { try { (console.info || console.log).apply(console, args); } catch (e) {} },
+  error: (...args) => { try { (console.error || console.log).apply(console, args); } catch (e) {} }
+};
+
+let devices = [];
+let editingId = null;
+let editingPhotos = []; // fotos sendo editadas no modal
+let dataSource = 'localStorage'; // 'remote' = lendo de catalogo.json, 'localStorage' = local
+const galleryIndexes = {}; // { deviceId: indexAtual } para galerias dos cards
+
+/* ---------- Storage ---------- */
+function migrate(d) {
+  // Garante que cada aparelho tenha o array `photos` e o campo `warranty`
+  const m = { ...d };
+  if (!Array.isArray(m.photos)) {
+    m.photos = m.photo ? [m.photo] : [];
+  }
+  delete m.photo;
+  if (typeof m.warranty !== 'string') m.warranty = m.warranty || '';
+  return m;
+}
+function loadFromLocalStorage() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) {
+      const arr = JSON.parse(raw);
+      return Array.isArray(arr) ? arr.map(migrate) : null;
+    }
+  } catch (e) { log.error(e); }
+  return null;
+}
+async function loadDevices() {
+  // 1) Tenta buscar catalogo.json (modo p\u00fablico/hospedado)
+  try {
+    const res = await fetch('catalogo.json?_=' + Date.now(), { cache: 'no-store' });
+    if (res.ok) {
+      const arr = await res.json();
+      if (Array.isArray(arr)) {
+        dataSource = 'remote';
+        return arr.map(migrate);
+      }
+    }
+  } catch (e) {
+    // sem internet, file://, ou arquivo inexistente — segue pra localStorage
+  }
+  // 2) Fallback: localStorage (modo admin local)
+  dataSource = 'localStorage';
+  const local = loadFromLocalStorage();
+  if (local) return local;
+  return seedExamples();
+}
+function saveDevices() {
+  // Salva sempre no localStorage (uso local de admin)
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(devices));
+}
+function seedExamples() {
+  return [
+    {
+      id: uid(),
+      model: 'iPhone 13',
+      color: 'Estelar',
+      storage: '128GB',
+      battery: 91,
+      replaced: 'nenhuma',
+      warranty: '90 dias',
+      price: 2890,
+      photos: [],
+      notes: 'Acompanha caixa e cabo original.'
+    },
+    {
+      id: uid(),
+      model: 'Samsung Galaxy S22',
+      color: 'Preto',
+      storage: '256GB',
+      battery: 88,
+      replaced: 'tela',
+      warranty: '3 meses',
+      price: 1990,
+      photos: [],
+      notes: ''
+    }
+  ];
+}
+
+/* ---------- Helpers ---------- */
+function uid() {
+  return Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+}
+function brl(v) {
+  return v.toLocaleString('pt-BR', { style:'currency', currency:'BRL', minimumFractionDigits: 2 });
+}
+function calcInstallments(price) {
+  const total12 = price * (1 + TAXA_12X);
+  const total18 = price * (1 + TAXA_18X);
+  return {
+    p12: total12 / 12,
+    p18: total18 / 18,
+    t12: total12,
+    t18: total18
+  };
+}
+function batteryClass(pct) {
+  if (pct >= 85) return 'battery-good';
+  if (pct >= 75) return 'battery-ok';
+  return 'battery-low';
+}
+function brandOf(model) {
+  if (!model) return 'Outros';
+  const m = model.toLowerCase();
+  if (m.includes('iphone') || m.includes('apple')) return 'Apple';
+  if (m.includes('samsung') || m.includes('galaxy')) return 'Samsung';
+  if (m.includes('xiaomi') || m.includes('redmi') || m.includes('poco')) return 'Xiaomi';
+  if (m.includes('motorola') || m.includes('moto ')) return 'Motorola';
+  if (m.includes('google') || m.includes('pixel')) return 'Google';
+  if (m.includes('huawei')) return 'Huawei';
+  if (m.includes('lg')) return 'LG';
+  if (m.includes('asus')) return 'Asus';
+  if (m.includes('realme')) return 'Realme';
+  return 'Outros';
+}
+
+/* Pontuação cronológica por modelo. Valores menores = mais antigos.
+   Dentro de uma mesma geração, a ordem é: mini < base < e < Plus < Pro < Pro Max */
+function releaseScore(model) {
+  if (!model) return 99999;
+  const m = model.toLowerCase().trim();
+
+  // iPhone SE (gerações: 1=2016, 2=2020, 3=2022)
+  let mt = m.match(/iphone\s+se(?:\s+(\d+))?/);
+  if (mt) {
+    const gen = parseInt(mt[1] || '1', 10);
+    const seMap = { 1: 70, 2: 115, 3: 135 };
+    return seMap[gen] || 100;
+  }
+
+  // iPhone N (com variante opcional)
+  mt = m.match(/iphone\s+(\d+)\s*(pro\s*max|plus|mini|max|pro|e)?/);
+  if (mt) {
+    const num = parseInt(mt[1], 10);
+    const v = (mt[2] || '').replace(/\s+/g, '');
+    const vMap = { 'mini': 0, '': 1, 'e': 2, 'plus': 3, 'max': 3, 'pro': 4, 'promax': 5 };
+    return num * 10 + (vMap[v] !== undefined ? vMap[v] : 1);
+  }
+
+  // Samsung Galaxy S (S20, S21, S22, S23, S24, S25...)
+  mt = m.match(/galaxy\s+s(\d+)\s*(fe|plus|\+|ultra)?/);
+  if (mt) {
+    const num = parseInt(mt[1], 10);
+    let v = (mt[2] || '').replace(/\s+/g, '');
+    if (v === '+') v = 'plus';
+    const vMap = { 'fe': 0, '': 1, 'plus': 2, 'ultra': 3 };
+    return num * 10 + (vMap[v] !== undefined ? vMap[v] : 1);
+  }
+
+  // Galaxy Note
+  mt = m.match(/galaxy\s+note\s*(\d+)/);
+  if (mt) return parseInt(mt[1], 10) * 10 + 1;
+
+  // Galaxy A
+  mt = m.match(/galaxy\s+a(\d+)/);
+  if (mt) return parseInt(mt[1], 10) * 10 + 0.5;
+
+  // Fallback genérico: pega o primeiro número do nome
+  const numMatch = m.match(/(\d+)/);
+  if (numMatch) return parseInt(numMatch[1], 10) * 10;
+
+  return 99999;
+}
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=> t.classList.remove('show'), 2400);
+}
+function escapeHtml(str) {
+  return String(str ?? '').replace(/[&<>"']/g, s => ({
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+  }[s]));
+}
+
+/* ---------- Render ---------- */
+function render() {
+  const grid = document.getElementById('grid');
+  const empty = document.getElementById('emptyState');
+  const search = document.getElementById('searchInput').value.trim().toLowerCase();
+  const brand = document.getElementById('brandFilter').value;
+
+  // refresh brand filter options
+  const brands = Array.from(new Set(devices.map(d => brandOf(d.model)))).sort();
+  const brandSelect = document.getElementById('brandFilter');
+  const currentBrand = brandSelect.value;
+  brandSelect.innerHTML = '<option value="">Todas as marcas</option>' +
+    brands.map(b => `<option value="${escapeHtml(b)}">${escapeHtml(b)}</option>`).join('');
+  brandSelect.value = currentBrand;
+
+  let filtered = devices.filter(d => {
+    if (brand && brandOf(d.model) !== brand) return false;
+    if (search) {
+      const haystack = [d.model, d.color, d.storage, d.replaced, d.warranty, d.notes]
+        .filter(Boolean).join(' ').toLowerCase();
+      if (!haystack.includes(search)) return false;
+    }
+    return true;
+  });
+
+  // Ordenação cronológica: do mais antigo ao mais novo
+  // (iPhone 11 → iPhone 17 Pro Max, Galaxy S20 → S25 Ultra etc.)
+  filtered.sort((a, b) => {
+    const sa = releaseScore(a.model);
+    const sb = releaseScore(b.model);
+    if (sa !== sb) return sa - sb;
+    // desempate: nome alfabético, depois cor
+    return (a.model + a.color).localeCompare(b.model + b.color, 'pt-BR');
+  });
+
+  grid.innerHTML = filtered.map(renderCard).join('');
+  empty.style.display = filtered.length ? 'none' : 'block';
+  if (filtered.length === 0 && devices.length > 0) {
+    empty.querySelector('h3').textContent = 'Nenhum aparelho encontrado';
+    empty.querySelector('p').textContent = 'Tente ajustar a busca ou o filtro de marca.';
+  } else if (devices.length === 0) {
+    empty.querySelector('h3').textContent = 'Nenhum aparelho cadastrado ainda';
+    if (document.body.classList.contains('admin-mode')) {
+      empty.querySelector('p').textContent = 'Clique em "+ Adicionar" para cadastrar o primeiro aparelho.';
+    } else {
+      empty.querySelector('p').textContent = 'Em breve novos aparelhos disponíveis. Volte mais tarde!';
+    }
+  }
+}
+
+function renderCard(d) {
+  const inst = calcInstallments(d.price);
+  const battClass = batteryClass(d.battery);
+  const replacedNorm = (d.replaced || '').trim().toLowerCase();
+  const isOriginal = !replacedNorm || replacedNorm === 'nenhuma' || replacedNorm === 'nenhum';
+  const replacedTag = isOriginal
+    ? `<span class="spec-tag original-badge">Tudo original</span>`
+    : `<span class="spec-tag replaced-badge">Trocado: ${escapeHtml(d.replaced)}</span>`;
+  const warrantyTag = d.warranty
+    ? `<span class="spec-tag" style="background:#e0f2fe;color:#075985;border-color:#bae6fd">Garantia ${escapeHtml(d.warranty)}</span>`
+    : '';
+
+  const waMessage = encodeURIComponent(
+    `Olá! Tenho interesse no ${d.model} ${d.storage} ${d.color} (R$ ${d.price.toFixed(2).replace('.',',')}). Ainda está disponível?`
+  );
+
+  const photos = Array.isArray(d.photos) ? d.photos.filter(Boolean) : [];
+  const idx = galleryIndexes[d.id] || 0;
+  const safeIdx = Math.min(idx, Math.max(0, photos.length - 1));
+  galleryIndexes[d.id] = safeIdx;
+
+  let imageHtml = '';
+  const clickOpensLightbox = photos.length > 0
+    ? `onclick="openLightbox('${d.id}', galleryIndexes['${d.id}']||0)"`
+    : '';
+
+  if (photos.length === 0) {
+    imageHtml = `<div class="card-image-placeholder">Sem foto</div>`;
+  } else if (photos.length === 1) {
+    imageHtml = `<img src="${escapeHtml(photos[0])}" alt="${escapeHtml(d.model)}" onerror="this.parentElement.innerHTML='<div class=\\'card-image-placeholder\\'>Sem imagem</div>'">`;
+  } else {
+    const slides = photos.map((p, i) =>
+      `<img src="${escapeHtml(p)}" alt="${escapeHtml(d.model)} foto ${i+1}" loading="lazy" onerror="this.style.visibility='hidden'">`
+    ).join('');
+    const dots = photos.map((_, i) =>
+      `<span class="gallery-dot ${i === safeIdx ? 'active' : ''}"></span>`
+    ).join('');
+    imageHtml = `
+      <div class="card-gallery" style="transform: translateX(-${safeIdx * 100}%)">${slides}</div>
+      <button class="gallery-arrow prev" onclick="galleryNav('${d.id}', -1); event.stopPropagation();" aria-label="Anterior">‹</button>
+      <button class="gallery-arrow next" onclick="galleryNav('${d.id}', 1); event.stopPropagation();" aria-label="Próxima">›</button>
+      <div class="gallery-counter">${safeIdx + 1}/${photos.length}</div>
+      <div class="gallery-dots">${dots}</div>
+    `;
+  }
+
+  return `
+    <article class="card" data-id="${d.id}">
+      <div class="card-image" ${clickOpensLightbox}>${imageHtml}</div>
+      <div class="card-body">
+        <h3 class="card-title">${escapeHtml(d.model)}</h3>
+        <div class="specs">
+          <span class="spec-tag">${escapeHtml(d.color)}</span>
+          <span class="spec-tag">${escapeHtml(d.storage)}</span>
+          <span class="spec-tag ${battClass}">Bateria ${d.battery}%</span>
+          ${replacedTag}
+          ${warrantyTag}
+        </div>
+        ${d.notes ? `<div style="font-size:13px;color:var(--text-muted)">${escapeHtml(d.notes)}</div>` : ''}
+        <div class="price-block">
+          <div class="price-cash">
+            À vista
+            <strong>${brl(d.price)}</strong>
+          </div>
+          <div class="price-installments">
+            ou <strong>12x de ${brl(inst.p12)}</strong> <span style="opacity:.7">(total ${brl(inst.t12)})</span><br>
+            ou <strong>18x de ${brl(inst.p18)}</strong> <span style="opacity:.7">(total ${brl(inst.t18)})</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a class="btn btn-success" href="https://wa.me/${WHATSAPP}?text=${waMessage}" target="_blank" rel="noopener">
+            <svg class="whatsapp-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.464 3.488"/></svg>
+            WhatsApp
+          </a>
+          <button class="btn btn-ghost admin-only btn-sm" onclick="editDevice('${d.id}')" title="Editar">✎</button>
+          <button class="btn btn-danger admin-only btn-sm" onclick="deleteDevice('${d.id}')" title="Excluir">🗑</button>
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+/* ---------- Admin actions ---------- */
+function openModal(device = null) {
+  editingId = device ? device.id : null;
+  document.getElementById('modalTitle').textContent = device ? 'Editar aparelho' : 'Adicionar aparelho';
+  document.getElementById('deviceId').value = device?.id || '';
+  document.getElementById('model').value = device?.model || '';
+  document.getElementById('color').value = device?.color || '';
+  document.getElementById('storage').value = device?.storage || '';
+  document.getElementById('battery').value = device?.battery ?? '';
+  document.getElementById('replaced').value = device?.replaced || '';
+  document.getElementById('warranty').value = device?.warranty || '';
+  document.getElementById('price').value = device?.price ?? '';
+  document.getElementById('notes').value = device?.notes || '';
+  document.getElementById('photoUrl').value = '';
+  document.getElementById('photoFile').value = '';
+
+  editingPhotos = device?.photos ? [...device.photos] : [];
+  renderEditGallery();
+
+  document.getElementById('modalForm').classList.add('open');
+}
+function renderEditGallery() {
+  const wrap = document.getElementById('photosGalleryEdit');
+  if (!wrap) return;
+  wrap.innerHTML = editingPhotos.map((p, i) => `
+    <div class="thumb-edit">
+      <img src="${escapeHtml(p)}" alt="">
+      ${i === 0 ? '<div class="thumb-main-badge">Principal</div>' : ''}
+      <button type="button" class="thumb-remove" onclick="removeEditPhoto(${i})" title="Remover">✕</button>
+    </div>
+  `).join('');
+}
+function removeEditPhoto(idx) {
+  editingPhotos.splice(idx, 1);
+  renderEditGallery();
+}
+function closeModal() {
+  document.getElementById('modalForm').classList.remove('open');
+  editingId = null;
+  editingPhotos = [];
+}
+function editDevice(id) {
+  const d = devices.find(x => x.id === id);
+  if (d) openModal(d);
+}
+function deleteDevice(id) {
+  const d = devices.find(x => x.id === id);
+  if (!d) return;
+  if (!confirm(`Excluir "${d.model}"?`)) return;
+  devices = devices.filter(x => x.id !== id);
+  saveDevices();
+  render();
+  showToast('Aparelho removido');
+}
+async function saveDevice() {
+  const photoUrl = document.getElementById('photoUrl').value.trim();
+  // Adiciona URLs digitadas (separadas por vírgula) como fotos
+  if (photoUrl) {
+    photoUrl.split(',').map(u => u.trim()).filter(Boolean).forEach(u => editingPhotos.push(u));
+  }
+
+  const data = {
+    id: editingId || uid(),
+    model: document.getElementById('model').value.trim(),
+    color: document.getElementById('color').value.trim(),
+    storage: document.getElementById('storage').value.trim(),
+    battery: parseInt(document.getElementById('battery').value, 10),
+    replaced: document.getElementById('replaced').value.trim(),
+    warranty: document.getElementById('warranty').value.trim(),
+    price: parseFloat(document.getElementById('price').value),
+    notes: document.getElementById('notes').value.trim(),
+    photos: editingPhotos.slice()
+  };
+
+  if (!data.model || !data.color || !data.storage || isNaN(data.battery) || isNaN(data.price)) {
+    alert('Preencha todos os campos obrigatórios.');
+    return;
+  }
+
+  if (editingId) {
+    devices = devices.map(d => d.id === editingId ? data : d);
+    showToast('Aparelho atualizado');
+  } else {
+    devices.unshift(data);
+    showToast('Aparelho adicionado');
+  }
+  saveDevices();
+  closeModal();
+  render();
+}
+
+/* ---------- Galeria nos cards ---------- */
+function galleryNav(deviceId, direction) {
+  const d = devices.find(x => x.id === deviceId);
+  if (!d || !d.photos || d.photos.length < 2) return;
+  const len = d.photos.length;
+  const cur = galleryIndexes[deviceId] || 0;
+  galleryIndexes[deviceId] = (cur + direction + len) % len;
+  render();
+}
+
+/* ---------- Lightbox (zoom de foto) ---------- */
+let lightboxState = { deviceId: null, index: 0 };
+
+function openLightbox(deviceId, startIndex = 0) {
+  const d = devices.find(x => x.id === deviceId);
+  if (!d || !d.photos || d.photos.length === 0) return;
+  lightboxState.deviceId = deviceId;
+  lightboxState.index = Math.max(0, Math.min(startIndex, d.photos.length - 1));
+  updateLightbox();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+  lightboxState.deviceId = null;
+}
+function lightboxNav(direction) {
+  const d = devices.find(x => x.id === lightboxState.deviceId);
+  if (!d) return;
+  const len = d.photos.length;
+  lightboxState.index = (lightboxState.index + direction + len) % len;
+  updateLightbox();
+}
+function updateLightbox() {
+  const d = devices.find(x => x.id === lightboxState.deviceId);
+  if (!d) return;
+  const photos = d.photos;
+  const img = document.getElementById('lightboxImg');
+  img.src = photos[lightboxState.index];
+  img.alt = `${d.model} - foto ${lightboxState.index + 1}`;
+  document.getElementById('lightboxCaption').textContent = d.model;
+  document.getElementById('lightboxCounter').textContent =
+    photos.length > 1 ? `${lightboxState.index + 1} de ${photos.length}` : '';
+  // Esconde setas se só tem 1 foto
+  document.getElementById('lightboxPrev').style.display = photos.length > 1 ? 'flex' : 'none';
+  document.getElementById('lightboxNext').style.display = photos.length > 1 ? 'flex' : 'none';
+}
+function fileToDataUrl(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+/* Comprime imagem: redimensiona pra no máx maxDim px no lado maior e
+   re-codifica como JPEG. Reduz drasticamente o tamanho de fotos do iPhone
+   (de ~3-5 MB pra ~100-200 KB) sem perda visual perceptível. */
+async function fileToCompressedDataUrl(file, maxDim = 1200, quality = 0.82) {
+  // Arquivos não-imagem passam direto
+  if (!file.type || !file.type.startsWith('image/')) {
+    return fileToDataUrl(file);
+  }
+  const original = await fileToDataUrl(file);
+  return new Promise(resolve => {
+    const img = new Image();
+    img.onload = () => {
+      try {
+        let { width, height } = img;
+        // Só redimensiona se for maior que o limite
+        if (width > maxDim || height > maxDim) {
+          if (width >= height) {
+            height = Math.round(height * maxDim / width);
+            width = maxDim;
+          } else {
+            width = Math.round(width * maxDim / height);
+            height = maxDim;
+          }
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        // Fundo branco (pra PNGs com transparência ficarem ok em JPEG)
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, width, height);
+        ctx.drawImage(img, 0, 0, width, height);
+        const compressed = canvas.toDataURL('image/jpeg', quality);
+        // Se por algum motivo a compressão ficou maior que o original, mantém original
+        resolve(compressed.length < original.length ? compressed : original);
+      } catch (err) {
+        log.error('compress falhou:', err);
+        resolve(original);
+      }
+    };
+    img.onerror = () => resolve(original);
+    img.src = original;
+  });
+}
+
+/* Re-comprime uma data URL já existente (usado na otimização em lote) */
+async function compressDataUrl(dataUrl, maxDim = 1200, quality = 0.82) {
+  if (!dataUrl || typeof dataUrl !== 'string') return dataUrl;
+  if (!dataUrl.startsWith('data:image/')) return dataUrl; // URL externa, mantém
+  return new Promise(resolve => {
+    const img = new Image();
+    img.onload = () => {
+      try {
+        let { width, height } = img;
+        if (width > maxDim || height > maxDim) {
+          if (width >= height) {
+            height = Math.round(height * maxDim / width);
+            width = maxDim;
+          } else {
+            width = Math.round(width * maxDim / height);
+            height = maxDim;
+          }
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, width, height);
+        ctx.drawImage(img, 0, 0, width, height);
+        const compressed = canvas.toDataURL('image/jpeg', quality);
+        resolve(compressed.length < dataUrl.length ? compressed : dataUrl);
+      } catch (e) {
+        log.error('compressDataUrl falhou:', e);
+        resolve(dataUrl);
+      }
+    };
+    img.onerror = () => resolve(dataUrl);
+    img.src = dataUrl;
+  });
+}
+
+/* Otimização em lote: re-comprime TODAS as fotos do catálogo de uma vez.
+   Útil pra encolher fotos antigas que foram cadastradas antes da compressão
+   automática existir. Salva no localStorage e atualiza a tela ao final. */
+async function optimizeAllPhotos() {
+  const totalPhotos = devices.reduce(
+    (sum, d) => sum + (Array.isArray(d.photos) ? d.photos.length : 0), 0
+  );
+  if (totalPhotos === 0) {
+    showToast('Nenhuma foto para otimizar');
+    return;
+  }
+
+  const ok = confirm(
+    `Otimizar ${totalPhotos} foto(s) de ${devices.length} aparelho(s)?\n\n` +
+    `Vai reduzir bastante o tamanho do catálogo e acelerar o site. ` +
+    `Pode levar alguns segundos.\n\n` +
+    `Depois você precisa tocar em 📤 Publicar para enviar a versão otimizada.`
+  );
+  if (!ok) return;
+
+  const btn = document.getElementById('btnOptimize');
+  const originalLabel = btn.textContent;
+  btn.disabled = true;
+
+  let processed = 0;
+  let totalBefore = 0;
+  let totalAfter = 0;
+
+  for (const device of devices) {
+    if (!Array.isArray(device.photos)) continue;
+    const newPhotos = [];
+    for (const photo of device.photos) {
+      processed++;
+      btn.textContent = `${processed}/${totalPhotos}`;
+      // estima tamanho em bytes
+      const beforeBytes = photo.startsWith('data:')
+        ? Math.round((photo.length - (photo.indexOf(',') + 1)) * 0.75)
+        : photo.length;
+      totalBefore += beforeBytes;
+      const compressed = await compressDataUrl(photo);
+      const afterBytes = compressed.startsWith('data:')
+        ? Math.round((compressed.length - (compressed.indexOf(',') + 1)) * 0.75)
+        : compressed.length;
+      totalAfter += afterBytes;
+      newPhotos.push(compressed);
+      // pequeno yield pra UI não congelar
+      await new Promise(r => setTimeout(r, 0));
+    }
+    device.photos = newPhotos;
+  }
+
+  saveDevices();
+  render();
+
+  btn.disabled = false;
+  btn.textContent = originalLabel;
+
+  const pct = totalBefore > 0 ? Math.round((1 - totalAfter / totalBefore) * 100) : 0;
+  const beforeMb = (totalBefore / 1024 / 1024).toFixed(2);
+  const afterMb = (totalAfter / 1024 / 1024).toFixed(2);
+
+  alert(
+    `✓ Otimização concluída!\n\n` +
+    `${totalPhotos} fotos processadas\n` +
+    `Antes:  ${beforeMb} MB\n` +
+    `Depois: ${afterMb} MB\n` +
+    `Economia: -${pct}%\n\n` +
+    `Agora toque em 📤 Publicar para enviar a versão otimizada pro site.`
+  );
+  showToast(`✓ Catálogo otimizado: -${pct}%`);
+}
+
+/* ---------- Export / Import ---------- */
+function exportJSON() {
+  try {
+    const data = JSON.stringify(devices, null, 2);
+    const sizeMB = (data.length / (1024 * 1024)).toFixed(2);
+    log.info(`Exportando ${devices.length} aparelhos (${sizeMB} MB)`);
+
+    const blob = new Blob([data], { type: 'application/json;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.style.display = 'none';
+    a.href = url;
+    a.download = `catalogo.json`;
+    a.rel = 'noopener';
+    a.target = '_self';
+    document.body.appendChild(a);
+    a.click();
+
+    // Limpa depois de um tempinho pra dar tempo do navegador iniciar o download
+    setTimeout(() => {
+      try { document.body.removeChild(a); } catch (e) {}
+      URL.revokeObjectURL(url);
+    }, 500);
+
+    showToast(`Backup exportado (${sizeMB} MB)`);
+  } catch (err) {
+    log.error('Erro ao exportar:', err);
+    alert('Erro ao exportar o catálogo: ' + err.message);
+  }
+}
+function importJSON(file) {
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const arr = JSON.parse(e.target.result);
+      if (!Array.isArray(arr)) throw new Error('Formato inválido');
+      if (!confirm(`Importar ${arr.length} aparelho(s)? Isso vai substituir o catálogo atual.`)) return;
+      devices = arr.map(d => ({ ...d, id: d.id || uid() }));
+      saveDevices();
+      render();
+      showToast('Catálogo importado');
+    } catch (err) {
+      alert('Arquivo JSON inválido: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+}
+
+/* ====================================================================
+   PUBLICAÇÃO VIA GITHUB (1 toque pelo iPhone)
+   --------------------------------------------------------------------
+   O catalogo.json é enviado pra um repositório no GitHub usando a API
+   oficial. O Cloudflare Pages está conectado a esse repositório e faz
+   o deploy automático sempre que o arquivo muda. Banda ilimitada.
+   ==================================================================== */
+const GH_KEYS = { user: 'gh_user', repo: 'gh_repo', branch: 'gh_branch', token: 'gh_token' };
+
+function getGitHubCreds() {
+  try {
+    return {
+      user: (localStorage.getItem(GH_KEYS.user) || '').trim(),
+      repo: (localStorage.getItem(GH_KEYS.repo) || '').trim(),
+      branch: (localStorage.getItem(GH_KEYS.branch) || '').trim() || 'main',
+      token: (localStorage.getItem(GH_KEYS.token) || '').trim()
+    };
+  } catch (e) { return { user: '', repo: '', branch: 'main', token: '' }; }
+}
+
+/* Codifica string UTF-8 em base64 (btoa puro quebra com acentos) */
+function base64EncodeUtf8(str) {
+  const bytes = new TextEncoder().encode(str);
+  let binary = '';
+  const chunk = 0x8000;
+  for (let i = 0; i < bytes.length; i += chunk) {
+    binary += String.fromCharCode.apply(null, bytes.subarray(i, i + chunk));
+  }
+  return btoa(binary);
+}
+
+function setNetlifyStatus(msg, kind) {
+  const el = document.getElementById('netlifyStatus');
+  if (!el) return;
+  if (!msg) { el.style.display = 'none'; el.textContent = ''; return; }
+  el.style.display = 'block';
+  el.textContent = msg;
+  if (kind === 'error') {
+    el.style.background = '#fef2f2'; el.style.color = '#991b1b'; el.style.border = '1px solid #fecaca';
+  } else if (kind === 'success') {
+    el.style.background = '#f0fdf4'; el.style.color = '#166534'; el.style.border = '1px solid #bbf7d0';
+  } else {
+    el.style.background = '#eff6ff'; el.style.color = '#1e40af'; el.style.border = '1px solid #bfdbfe';
+  }
+}
+
+function openNetlifyConfig() {
+  const c = getGitHubCreds();
+  document.getElementById('ghUser').value = c.user || '';
+  document.getElementById('ghRepo').value = c.repo || '';
+  document.getElementById('ghBranch').value = c.branch || 'main';
+  document.getElementById('ghToken').value = c.token || '';
+  document.getElementById('netlifyClearBtn').style.display =
+    (c.user || c.repo || c.token) ? 'inline-flex' : 'none';
+  setNetlifyStatus('', '');
+  document.getElementById('modalNetlify').classList.add('open');
+}
+
+function closeNetlifyConfig() {
+  document.getElementById('modalNetlify').classList.remove('open');
+}
+
+function saveNetlifyConfig() {
+  const user = document.getElementById('ghUser').value.trim();
+  const repo = document.getElementById('ghRepo').value.trim();
+  const branch = document.getElementById('ghBranch').value.trim() || 'main';
+  const token = document.getElementById('ghToken').value.trim();
+  if (!user || !repo || !token) {
+    setNetlifyStatus('Preencha usuário, repositório e token.', 'error');
+    return;
+  }
+  try {
+    localStorage.setItem(GH_KEYS.user, user);
+    localStorage.setItem(GH_KEYS.repo, repo);
+    localStorage.setItem(GH_KEYS.branch, branch);
+    localStorage.setItem(GH_KEYS.token, token);
+    setNetlifyStatus('✓ Salvo! Agora você pode tocar em Publicar.', 'success');
+    setTimeout(closeNetlifyConfig, 1200);
+  } catch (e) {
+    setNetlifyStatus('Erro ao salvar: ' + e.message, 'error');
+  }
+}
+
+function clearNetlifyConfig() {
+  if (!confirm('Limpar dados de publicação deste navegador?')) return;
+  try {
+    Object.values(GH_KEYS).forEach(k => localStorage.removeItem(k));
+    document.getElementById('ghUser').value = '';
+    document.getElementById('ghRepo').value = '';
+    document.getElementById('ghBranch').value = 'main';
+    document.getElementById('ghToken').value = '';
+    document.getElementById('netlifyClearBtn').style.display = 'none';
+    setNetlifyStatus('Dados removidos.', 'info');
+  } catch (e) {}
+}
+
+async function publishToNetlify() {
+  const { user, repo, branch, token } = getGitHubCreds();
+  if (!user || !repo || !token) {
+    showToast('Configure a publicação primeiro');
+    openNetlifyConfig();
+    return;
+  }
+
+  const btn = document.getElementById('btnPublish');
+  const original = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = '⏳ Publicando...';
+  showToast('Publicando no GitHub...');
+
+  const api = `https://api.github.com/repos/${encodeURIComponent(user)}/${encodeURIComponent(repo)}`;
+  const baseHeaders = {
+    'Authorization': `Bearer ${token}`,
+    'Accept': 'application/vnd.github+json',
+    'X-GitHub-Api-Version': '2022-11-28'
+  };
+
+  // helper: faz request e trata erro com mensagem clara
+  async function gh(path, opts = {}) {
+    const res = await fetch(api + path, {
+      ...opts,
+      headers: { ...baseHeaders, ...(opts.headers || {}) }
+    });
+    if (!res.ok) {
+      const txt = await res.text().catch(() => '');
+      let msg = txt.slice(0, 200);
+      try { const j = JSON.parse(txt); msg = j.message || msg; } catch (e) {}
+      if (res.status === 401) {
+        throw new Error('Token inválido ou expirado. Gere um novo no GitHub (Settings → Developer settings → Fine-grained tokens).');
+      }
+      if (res.status === 404) {
+        throw new Error(`Repositório "${user}/${repo}" ou branch "${branch}" não encontrado. Confira no botão 🔧. (${msg})`);
+      }
+      if (res.status === 403) {
+        throw new Error(`Sem permissão. O token precisa de acesso de leitura/escrita em "Contents" deste repositório. (${msg})`);
+      }
+      throw new Error(`Erro do GitHub (HTTP ${res.status}): ${msg}`);
+    }
+    return res.json();
+  }
+
+  try {
+    // 1) descobrir o commit atual da branch
+    const ref = await gh(`/git/ref/heads/${encodeURIComponent(branch)}`);
+    const latestCommitSha = ref.object.sha;
+
+    // 2) descobrir a árvore (tree) desse commit
+    const commit = await gh(`/git/commits/${latestCommitSha}`);
+    const baseTreeSha = commit.tree.sha;
+
+    // 3) criar um blob com o novo conteúdo do catalogo.json
+    const jsonStr = JSON.stringify(devices, null, 2);
+    const jsonBytes = new TextEncoder().encode(jsonStr).length;
+    const blob = await gh('/git/blobs', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ content: base64EncodeUtf8(jsonStr), encoding: 'base64' })
+    });
+
+    // 4) criar uma nova árvore trocando só o catalogo.json
+    const tree = await gh('/git/trees', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        base_tree: baseTreeSha,
+        tree: [{ path: 'catalogo.json', mode: '100644', type: 'blob', sha: blob.sha }]
+      })
+    });
+
+    // 5) criar o commit
+    const dataBr = new Date().toLocaleString('pt-BR');
+    const newCommit = await gh('/git/commits', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        message: `Atualiza catálogo — ${dataBr}`,
+        tree: tree.sha,
+        parents: [latestCommitSha]
+      })
+    });
+
+    // 6) mover a branch para o novo commit
+    await gh(`/git/refs/heads/${encodeURIComponent(branch)}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ sha: newCommit.sha, force: false })
+    });
+
+    const sizeKb = (jsonBytes / 1024).toFixed(0);
+    showToast(`✓ Publicado! (~${sizeKb} KB) O site atualiza em ~1 minuto.`);
+  } catch (err) {
+    log.error('publishToNetlify (GitHub):', err);
+    showToast('Erro: ' + (err.message || 'falha'));
+    alert('Erro ao publicar:\n\n' + (err.message || err));
+  } finally {
+    btn.disabled = false;
+    btn.textContent = original;
+  }
+}
+
+/* ---------- Init ---------- */
+document.getElementById('btnAdmin').addEventListener('click', () => {
+  // Em modo admin, clicar na engrenagem sai do modo admin e remove a senha da URL
+  document.body.classList.remove('admin-mode');
+  try {
+    const url = new URL(window.location.href);
+    url.searchParams.delete('admin');
+    window.history.replaceState({}, '', url.toString());
+  } catch (e) {}
+  render();
+  showToast('Modo admin desativado');
+});
+
+/* Verifica se a URL contém ?admin=SENHA correta e ativa o modo admin */
+function checkAdminAccess() {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const pass = params.get('admin');
+    if (pass && pass === ADMIN_PASS) {
+      document.body.classList.add('admin-mode');
+      return true;
+    }
+  } catch (e) {}
+  return false;
+}
+document.getElementById('btnAdd').addEventListener('click', () => openModal());
+document.getElementById('btnExport').addEventListener('click', exportJSON);
+document.getElementById('btnImport').addEventListener('click', () => document.getElementById('importFile').click());
+document.getElementById('btnPublish').addEventListener('click', publishToNetlify);
+document.getElementById('btnOptimize').addEventListener('click', optimizeAllPhotos);
+document.getElementById('btnNetlifyConfig').addEventListener('click', openNetlifyConfig);
+document.getElementById('modalNetlifyClose').addEventListener('click', closeNetlifyConfig);
+document.getElementById('netlifyCancelBtn').addEventListener('click', closeNetlifyConfig);
+document.getElementById('netlifySaveBtn').addEventListener('click', saveNetlifyConfig);
+document.getElementById('netlifyClearBtn').addEventListener('click', clearNetlifyConfig);
+document.getElementById('modalNetlify').addEventListener('click', e => {
+  if (e.target.id === 'modalNetlify') closeNetlifyConfig();
+});
+document.getElementById('importFile').addEventListener('change', e => {
+  if (e.target.files[0]) importJSON(e.target.files[0]);
+  e.target.value = '';
+});
+document.getElementById('modalClose').addEventListener('click', closeModal);
+document.getElementById('cancelBtn').addEventListener('click', closeModal);
+document.getElementById('saveBtn').addEventListener('click', saveDevice);
+document.getElementById('searchInput').addEventListener('input', render);
+document.getElementById('brandFilter').addEventListener('change', render);
+document.getElementById('modalForm').addEventListener('click', e => {
+  if (e.target.id === 'modalForm') closeModal();
+});
+
+// Upload múltiplo de fotos (cada arquivo vira uma entrada em editingPhotos)
+// Cada foto é comprimida automaticamente (redimensiona pra 1200px, JPEG 82%)
+document.getElementById('photoFile').addEventListener('change', async e => {
+  const files = Array.from(e.target.files || []);
+  if (!files.length) return;
+  if (files.length > 1) showToast(`Otimizando ${files.length} fotos...`);
+  let totalOriginal = 0;
+  let totalCompressed = 0;
+  for (const f of files) {
+    try {
+      totalOriginal += f.size || 0;
+      const url = await fileToCompressedDataUrl(f);
+      // estima bytes da data URL (base64 → bytes ~= length * 3/4)
+      totalCompressed += Math.round((url.length - (url.indexOf(',') + 1)) * 0.75);
+      editingPhotos.push(url);
+    } catch (err) { log.error(err); }
+  }
+  e.target.value = '';
+  renderEditGallery();
+  if (totalOriginal > 0) {
+    const pct = Math.round((1 - totalCompressed / totalOriginal) * 100);
+    const origKb = (totalOriginal / 1024).toFixed(0);
+    const compKb = (totalCompressed / 1024).toFixed(0);
+    showToast(`✓ ${files.length} foto(s) otimizada(s): ${origKb}KB → ${compKb}KB (-${pct}%)`);
+  }
+});
+
+// Esc to close modal e lightbox / setas pra navegar no lightbox
+document.addEventListener('keydown', e => {
+  const lightboxOpen = document.getElementById('lightbox').classList.contains('open');
+  if (e.key === 'Escape') {
+    if (lightboxOpen) closeLightbox();
+    else if (document.getElementById('modalNetlify').classList.contains('open')) closeNetlifyConfig();
+    else closeModal();
+  } else if (lightboxOpen) {
+    if (e.key === 'ArrowLeft') lightboxNav(-1);
+    else if (e.key === 'ArrowRight') lightboxNav(1);
+  }
+});
+
+// Lightbox event listeners
+document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+document.getElementById('lightboxPrev').addEventListener('click', e => { e.stopPropagation(); lightboxNav(-1); });
+document.getElementById('lightboxNext').addEventListener('click', e => { e.stopPropagation(); lightboxNav(1); });
+document.getElementById('lightbox').addEventListener('click', e => {
+  // Clicou no fundo (não na imagem nem nos botões)? Fecha
+  if (e.target.id === 'lightbox') closeLightbox();
+});
+
+// Expose handlers for inline onclicks
+window.editDevice = editDevice;
+window.deleteDevice = deleteDevice;
+window.galleryNav = galleryNav;
+window.removeEditPhoto = removeEditPhoto;
+window.openLightbox = openLightbox;
+
+// Init assíncrono — tenta carregar catalogo.json primeiro, depois localStorage
+(async function init() {
+  const isAdmin = checkAdminAccess();
+  devices = await loadDevices();
+  render();
+  if (isAdmin) {
+    log.info('Modo admin ativado via URL');
+    setTimeout(() => showToast('Modo admin ativo'), 200);
+  }
+  if (dataSource === 'remote') {
+    log.info('Catálogo carregado de catalogo.json (modo público)');
+  } else {
+    log.info('Catálogo carregado do navegador (modo admin local)');
+  }
+})();
+</script>
+
+</body>
+</html>
