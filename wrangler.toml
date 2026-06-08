@@ -1,8 +1,0 @@
-name = "catalogo-clickms"
-compatibility_date = "2026-05-15"
-main = "worker.js"
-
-[assets]
-directory = "./"
-binding = "ASSETS"
-run_worker_first = true
