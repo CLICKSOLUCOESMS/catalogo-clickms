@@ -890,10 +890,56 @@
   body.copa-theme .card:hover {
     box-shadow: 0 6px 20px rgba(0,156,59,.14), 0 2px 6px rgba(0,156,59,.08);
   }
+
+  /* Listras de gramado */
+  body.copa-theme {
+    background-image: repeating-linear-gradient(
+      180deg,
+      transparent 0, transparent 72px,
+      rgba(0,120,50,.042) 72px, rgba(0,120,50,.042) 144px
+    );
+  }
+
+  /* Bola de futebol — marca d'água no canto */
+  .copa-ball-deco {
+    display: none;
+    position: fixed;
+    bottom: -40px;
+    right: -40px;
+    font-size: 220px;
+    opacity: .055;
+    pointer-events: none;
+    z-index: 0;
+    user-select: none;
+    line-height: 1;
+  }
+  body.copa-theme .copa-ball-deco { display: block; }
+
+  /* Banner copa - estrelas */
+  .copa-banner-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .copa-estrelas { color: #FFDF00; letter-spacing: 3px; font-size: 13px; }
+  .copa-hexa-star {
+    color: #FFDF00;
+    font-size: 16px;
+    animation: twinkle 1.6s ease-in-out infinite;
+    display: inline-block;
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 1; transform: scale(1) rotate(0deg); }
+    50%       { opacity: .75; transform: scale(1.25) rotate(15deg); }
+  }
+
   @media (max-width: 768px) {
     .copa-banner { font-size: 12px; padding: 7px 36px; }
     .copa-banner::before { left: 10px; font-size: 14px; }
     .copa-banner::after  { right: 10px; font-size: 14px; }
+    .copa-ball-deco { font-size: 140px; bottom: -20px; right: -20px; }
   }
 </style>
 </head>
@@ -926,7 +972,11 @@
 </header>
 
 <div class="copa-banner" id="copaBanner">
-  🇧🇷 &nbsp;Copa do Mundo 2026 — Vai Brasil! &nbsp;🇧🇷
+  <div class="copa-banner-inner">
+    <span class="copa-estrelas">⭐⭐⭐⭐⭐</span>
+    <span>🇧🇷 &nbsp;VAI HEXA! COPA DO MUNDO 2026 &nbsp;🇧🇷</span>
+    <span class="copa-hexa-star">⭐</span>
+  </div>
 </div>
 
 <section class="toolbar-section">
@@ -2227,6 +2277,8 @@ document.getElementById('btnCopaTheme').addEventListener('click', () => {
   }
 })();
 </script>
+
+<div class="copa-ball-deco" aria-hidden="true">⚽</div>
 
 </body>
 </html>
