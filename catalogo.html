@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -810,6 +811,90 @@
     .lightbox-close { top: 10px; right: 10px; width: 38px; height: 38px; font-size: 18px; }
     .lightbox-caption { font-size: 12px; max-width: calc(100% - 100px); }
   }
+
+  /* ===== TEMA COPA DO MUNDO 2026 ===== */
+  body.copa-theme {
+    --bg: #edf9f2;
+    --surface: #ffffff;
+    --text: #071a0e;
+    --text-muted: #3d6b4f;
+    --border: #b8dfc6;
+    --primary: #009C3B;
+    --primary-hover: #007a2f;
+    --accent: #009C3B;
+    --accent-hover: #007a2f;
+  }
+  body.copa-theme .site-header {
+    background: rgba(0,39,118,.97) !important;
+    border-bottom: 3px solid #FFDF00;
+  }
+  body.copa-theme .brand-text h1 { color: #FFDF00 !important; }
+  body.copa-theme .brand-text p  { color: rgba(255,255,255,.75) !important; }
+  body.copa-theme .btn-ghost {
+    color: rgba(255,255,255,.9);
+    border-color: rgba(255,255,255,.25);
+  }
+  body.copa-theme .btn-ghost:hover { background: rgba(255,255,255,.12); }
+  body.copa-theme .admin-badge { background: #FFDF00; color: #002776; }
+
+  /* Banner copa */
+  .copa-banner {
+    display: none;
+    background: linear-gradient(90deg, #002776 0%, #009C3B 55%, #002776 100%);
+    color: white;
+    text-align: center;
+    padding: 9px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: .4px;
+    position: relative;
+    overflow: hidden;
+  }
+  .copa-banner::before,
+  .copa-banner::after {
+    content: '⚽';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    opacity: .5;
+  }
+  .copa-banner::before { left: 16px; }
+  .copa-banner::after  { right: 16px; }
+  body.copa-theme .copa-banner { display: block; }
+
+  body.copa-theme .card-image {
+    background: linear-gradient(135deg, #e4f7ec, #cdeedd);
+  }
+  body.copa-theme .price-block {
+    background: linear-gradient(135deg, #edf9f2, #dff4ea);
+    border: 1px solid #b8dfc6;
+  }
+  body.copa-theme .spec-tag {
+    background: #edf9f2;
+    border-color: #b8dfc6;
+  }
+  body.copa-theme .search-box input:focus,
+  body.copa-theme .form-row input:focus,
+  body.copa-theme .form-row select:focus,
+  body.copa-theme .form-row textarea:focus {
+    border-color: #009C3B;
+    box-shadow: 0 0 0 3px rgba(0,156,59,.15);
+  }
+  body.copa-theme .toolbar {
+    border-color: #b8dfc6;
+  }
+  body.copa-theme .card {
+    border-color: #c8e6d2;
+  }
+  body.copa-theme .card:hover {
+    box-shadow: 0 6px 20px rgba(0,156,59,.14), 0 2px 6px rgba(0,156,59,.08);
+  }
+  @media (max-width: 768px) {
+    .copa-banner { font-size: 12px; padding: 7px 36px; }
+    .copa-banner::before { left: 10px; font-size: 14px; }
+    .copa-banner::after  { right: 10px; font-size: 14px; }
+  }
 </style>
 </head>
 <body>
@@ -833,11 +918,16 @@
       <button class="btn btn-ghost admin-only" id="btnOptimize" title="Otimizar todas as fotos do catálogo">🗜</button>
       <button class="btn btn-ghost admin-only" id="btnExport" title="Exportar JSON (backup)">⬇</button>
       <button class="btn btn-ghost admin-only" id="btnImport" title="Importar JSON">⬆</button>
+      <button class="btn btn-ghost btn-icon admin-only" id="btnCopaTheme" title="Alternar tema Copa do Mundo">⚽</button>
       <button class="btn btn-ghost btn-icon admin-only" id="btnNetlifyConfig" title="Configurar publicação (GitHub)">🔧</button>
       <button class="btn btn-ghost btn-icon admin-only" id="btnAdmin" title="Sair do modo admin">⚙</button>
     </div>
   </div>
 </header>
+
+<div class="copa-banner" id="copaBanner">
+  🇧🇷 &nbsp;Copa do Mundo 2026 — Vai Brasil! &nbsp;🇧🇷
+</div>
 
 <section class="toolbar-section">
   <h2 class="hero-title">Estoque disponível</h2>
@@ -2084,9 +2174,46 @@ if (seeFullCatalogLink) {
   });
 }
 
+/* ---------- Tema Copa do Mundo 2026 ---------- */
+const COPA_START    = new Date('2026-06-07T00:00:00');
+const COPA_END      = new Date('2026-07-20T00:00:00'); // termina depois de 19/jul
+const COPA_PREF_KEY = 'copa_theme_pref'; // 'on' | 'off' | null (auto)
+
+function isCopaPeriod() {
+  const now = new Date();
+  return now >= COPA_START && now < COPA_END;
+}
+
+function applyCopaTheme(active) {
+  document.body.classList.toggle('copa-theme', active);
+  const btn = document.getElementById('btnCopaTheme');
+  if (btn) {
+    btn.textContent  = active ? '🏁' : '⚽';
+    btn.title        = active ? 'Desativar tema Copa do Mundo' : 'Ativar tema Copa do Mundo';
+  }
+}
+
+function initCopaTheme() {
+  const pref    = localStorage.getItem(COPA_PREF_KEY);
+  const inCopa  = isCopaPeriod();
+  // Durante a Copa: ON por padrão (salvo admin desativou manualmente)
+  // Fora da Copa: OFF por padrão (salvo admin ativou manualmente)
+  const active  = inCopa ? pref !== 'off' : pref === 'on';
+  applyCopaTheme(active);
+}
+
+document.getElementById('btnCopaTheme').addEventListener('click', () => {
+  const currently = document.body.classList.contains('copa-theme');
+  const next      = !currently;
+  localStorage.setItem(COPA_PREF_KEY, next ? 'on' : 'off');
+  applyCopaTheme(next);
+  showToast(next ? '⚽ Tema Copa ativado!' : '✓ Tema normal restaurado');
+});
+
 // Init assíncrono — tenta carregar catalogo.json primeiro, depois localStorage
 (async function init() {
   const isAdmin = checkAdminAccess();
+  initCopaTheme();
   devices = await loadDevices();
   render();
   if (isAdmin) {
