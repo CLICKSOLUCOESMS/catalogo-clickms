@@ -519,6 +519,36 @@
     border-color: rgba(251,191,36,0.3);
   }
 
+  /* ----- Promoção ----- */
+  .promo-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: linear-gradient(135deg, #f87171 0%, #dc2626 100%);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    padding: 5px 11px;
+    border-radius: 100px;
+    z-index: 2;
+    box-shadow: 0 4px 14px rgba(220,38,38,0.45);
+    text-transform: uppercase;
+  }
+  .card.promo-active {
+    border-color: rgba(248,113,113,0.35);
+    box-shadow: 0 24px 60px -16px rgba(0,0,0,.6), 0 0 0 1px rgba(248,113,113,0.2);
+  }
+  .btn-promo-on {
+    background: linear-gradient(135deg, #f87171 0%, #dc2626 100%);
+    color: #fff;
+    border: none;
+    box-shadow: 0 4px 14px rgba(220,38,38,0.3);
+  }
+  .btn-promo-on:hover {
+    background: linear-gradient(135deg, #fb8a8a 0%, #e63030 100%);
+  }
+
   .price-block {
     background: linear-gradient(135deg, rgba(212,175,55,0.06) 0%, rgba(212,175,55,0.02) 100%);
     border-radius: var(--radius);
@@ -1067,6 +1097,12 @@
         </div>
 
         <div class="form-row">
+          <label>Número de série (IMEI/Serial) *</label>
+          <input type="text" id="serialNumber" placeholder="Ex: FK2XXXXXXAB" required>
+          <div class="form-help">Guardado por completo no cadastro, mas no catálogo público só aparecem os <b>últimos 4 caracteres</b>.</div>
+        </div>
+
+        <div class="form-row">
           <label>Peças trocadas</label>
           <input type="text" id="replaced" placeholder="Ex: tela / nenhuma / bateria">
           <div class="form-help">Deixe em branco ou escreva "nenhuma" se for tudo original.</div>
@@ -1211,6 +1247,8 @@ function migrate(d) {
   }
   delete m.photo;
   if (typeof m.warranty !== 'string') m.warranty = m.warranty || '';
+  if (typeof m.serialNumber !== 'string') m.serialNumber = m.serialNumber || '';
+  m.promotion = !!m.promotion;
   return m;
 }
 function loadFromLocalStorage() {
@@ -1257,6 +1295,8 @@ function seedExamples() {
       battery: 91,
       replaced: 'nenhuma',
       warranty: '90 dias',
+      serialNumber: 'FK2LXXXX12AB',
+      promotion: true,
       price: 2890,
       photos: [],
       notes: 'Acompanha caixa e cabo original.'
@@ -1269,6 +1309,7 @@ function seedExamples() {
       battery: 88,
       replaced: 'tela',
       warranty: '3 meses',
+      serialNumber: 'RF8MXXXX99CD',
       price: 1990,
       photos: [],
       notes: ''
@@ -1460,7 +1501,7 @@ function render() {
     if (singleId && singleDevice) return d.id === singleId;
     if (brand && brandOf(d.model) !== brand) return false;
     if (search) {
-      const haystack = [d.model, d.color, d.storage, d.replaced, d.warranty, d.notes]
+      const haystack = [d.model, d.color, d.storage, d.replaced, d.warranty, d.notes, d.serialNumber]
         .filter(Boolean).join(' ').toLowerCase();
       if (!haystack.includes(search)) return false;
     }
@@ -1511,6 +1552,9 @@ function renderCard(d) {
   const warrantyTag = d.warranty
     ? `<span class="spec-tag">Garantia ${escapeHtml(d.warranty)}</span>`
     : '';
+  const serialTag = d.serialNumber
+    ? `<span class="spec-tag">Nº série ****${escapeHtml(String(d.serialNumber).slice(-4))}</span>`
+    : '';
 
   const waMessage = encodeURIComponent(
     `Olá! Tenho interesse no ${d.model} ${d.storage} ${d.color} (R$ ${d.price.toFixed(2).replace('.',',')}). Ainda está disponível?`
@@ -1546,9 +1590,11 @@ function renderCard(d) {
     `;
   }
 
+  const isPromo = !!d.promotion;
+
   return `
-    <article class="card" data-id="${d.id}">
-      <div class="card-image" ${clickOpensLightbox}>${imageHtml}</div>
+    <article class="card ${isPromo ? 'promo-active' : ''}" data-id="${d.id}">
+      <div class="card-image" ${clickOpensLightbox}>${isPromo ? '<span class="promo-badge">🔥 Promoção</span>' : ''}${imageHtml}</div>
       <div class="card-body">
         <h3 class="card-title">${escapeHtml(d.model)}</h3>
         <div class="specs">
@@ -1557,6 +1603,7 @@ function renderCard(d) {
           <span class="spec-tag ${battClass}">Bateria ${d.battery}%</span>
           ${replacedTag}
           ${warrantyTag}
+          ${serialTag}
         </div>
         ${d.notes ? `<div style="font-size:13px;color:var(--text-muted)">${escapeHtml(d.notes)}</div>` : ''}
         <div class="price-block">
@@ -1574,6 +1621,7 @@ function renderCard(d) {
             WhatsApp
           </a>
           <button class="btn btn-ghost btn-sm" onclick="copyDeviceLink('${d.id}')" title="Copiar link deste aparelho para compartilhar">🔗<span class="btn-link-text"> Copiar link</span></button>
+          <button class="btn ${isPromo ? 'btn-promo-on' : 'btn-ghost'} admin-only btn-sm" onclick="togglePromotion('${d.id}')" title="Ativar/desativar promoção">${isPromo ? '🔥 Promoção ativa' : '🏷️ Marcar promoção'}</button>
           <button class="btn btn-ghost admin-only btn-sm" onclick="editDevice('${d.id}')" title="Editar">✎</button>
           <button class="btn btn-danger admin-only btn-sm" onclick="deleteDevice('${d.id}')" title="Excluir">🗑</button>
         </div>
@@ -1591,6 +1639,7 @@ function openModal(device = null) {
   document.getElementById('color').value = device?.color || '';
   document.getElementById('storage').value = device?.storage || '';
   document.getElementById('battery').value = device?.battery ?? '';
+  document.getElementById('serialNumber').value = device?.serialNumber || '';
   document.getElementById('replaced').value = device?.replaced || '';
   document.getElementById('warranty').value = device?.warranty || '';
   document.getElementById('price').value = device?.price ?? '';
@@ -1636,6 +1685,14 @@ function deleteDevice(id) {
   render();
   showToast('Aparelho removido');
 }
+function togglePromotion(id) {
+  const d = devices.find(x => x.id === id);
+  if (!d) return;
+  d.promotion = !d.promotion;
+  saveDevices();
+  render();
+  showToast(d.promotion ? '🔥 Promoção ativada' : 'Promoção desativada');
+}
 async function saveDevice() {
   const photoUrl = document.getElementById('photoUrl').value.trim();
   // Adiciona URLs digitadas (separadas por vírgula) como fotos
@@ -1649,6 +1706,7 @@ async function saveDevice() {
     color: document.getElementById('color').value.trim(),
     storage: document.getElementById('storage').value.trim(),
     battery: parseInt(document.getElementById('battery').value, 10),
+    serialNumber: document.getElementById('serialNumber').value.trim(),
     replaced: document.getElementById('replaced').value.trim(),
     warranty: document.getElementById('warranty').value.trim(),
     price: parseFloat(document.getElementById('price').value),
@@ -1656,8 +1714,8 @@ async function saveDevice() {
     photos: editingPhotos.slice()
   };
 
-  if (!data.model || !data.color || !data.storage || isNaN(data.battery) || isNaN(data.price)) {
-    alert('Preencha todos os campos obrigatórios.');
+  if (!data.model || !data.color || !data.storage || isNaN(data.battery) || isNaN(data.price) || !data.serialNumber) {
+    alert('Preencha todos os campos obrigatórios (incluindo o número de série).');
     return;
   }
 
