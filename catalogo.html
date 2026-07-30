@@ -1707,7 +1707,14 @@ function togglePromotion(id) {
   render();
   showToast(d.promotion ? '🔥 Promoção ativada' : 'Promoção desativada');
 }
+let isSavingDevice = false;
 async function saveDevice() {
+  // Trava contra cliques/toques repetidos (evita cadastrar o mesmo aparelho várias vezes)
+  if (isSavingDevice) return;
+  isSavingDevice = true;
+  const _saveBtn = document.getElementById('saveBtn');
+  if (_saveBtn) { _saveBtn.disabled = true; }
+  try {
   const photoUrl = document.getElementById('photoUrl').value.trim();
   // Adiciona URLs digitadas (separadas por vírgula) como fotos
   if (photoUrl) {
@@ -1744,6 +1751,10 @@ async function saveDevice() {
   saveDevices();
   closeModal();
   render();
+  } finally {
+    isSavingDevice = false;
+    if (_saveBtn) { _saveBtn.disabled = false; }
+  }
 }
 
 /* ---------- Galeria nos cards ---------- */
