@@ -787,6 +787,35 @@
     justify-content: center;
     padding: 0;
   }
+  .photos-gallery-edit .photo-thumb.is-main {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--accent);
+  }
+  .photos-gallery-edit .photo-main-badge {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: var(--accent);
+    color: #1a1a1a;
+    font-size: 11px;
+    font-weight: 700;
+    text-align: center;
+    padding: 3px 0;
+  }
+  .photos-gallery-edit .photo-make-main {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: rgba(0,0,0,0.72);
+    color: #fff;
+    border: none;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 0;
+    cursor: pointer;
+  }
+  .photos-gallery-edit .photo-make-main:hover {
+    background: var(--accent);
+    color: #1a1a1a;
+  }
 
   /* ----- Lightbox ----- */
   .lightbox {
@@ -1076,7 +1105,7 @@
         <div class="form-row">
           <label>Fotos do aparelho</label>
           <input type="file" id="photoFile" accept="image/*" multiple>
-          <div class="form-help">Selecione uma ou várias fotos (frente, costas, detalhes). Você também pode colar URLs separadas por vírgula no campo abaixo.</div>
+          <div class="form-help">Selecione uma ou várias fotos (frente, costas, detalhes). Você também pode colar URLs separadas por vírgula no campo abaixo. Passe o mouse sobre uma foto e clique em <b>Tornar principal</b> para escolher qual aparece como capa.</div>
           <input type="text" id="photoUrl" placeholder="https://..., https://..." style="margin-top:6px">
           <div class="photos-gallery-edit" id="photosGalleryEdit"></div>
         </div>
@@ -1670,12 +1699,20 @@ function renderEditGallery() {
   const wrap = document.getElementById('photosGalleryEdit');
   if (!wrap) return;
   wrap.innerHTML = editingPhotos.map((p, i) => `
-    <div class="thumb-edit">
+    <div class="photo-thumb${i === 0 ? ' is-main' : ''}">
       <img src="${escapeHtml(p)}" alt="">
-      ${i === 0 ? '<div class="thumb-main-badge">Principal</div>' : ''}
-      <button type="button" class="thumb-remove" onclick="removeEditPhoto(${i})" title="Remover">✕</button>
+      ${i === 0
+        ? '<div class="photo-main-badge">★ Principal</div>'
+        : `<button type="button" class="photo-make-main" onclick="makeMainPhoto(${i})" title="Definir como foto principal">Tornar principal</button>`}
+      <button type="button" class="photo-remove" onclick="removeEditPhoto(${i})" title="Remover">✕</button>
     </div>
   `).join('');
+}
+function makeMainPhoto(idx) {
+  if (idx <= 0 || idx >= editingPhotos.length) return;
+  const [pic] = editingPhotos.splice(idx, 1);
+  editingPhotos.unshift(pic);
+  renderEditGallery();
 }
 function removeEditPhoto(idx) {
   editingPhotos.splice(idx, 1);
